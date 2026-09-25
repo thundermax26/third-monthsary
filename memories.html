@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Little Memories ♡</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="memories-page">
+  <div class="memory-bg-shape shape-a"></div>
+  <div class="memory-bg-shape shape-b"></div>
+
+  <main class="memories-scene page-enter" id="memoriesScene">
+    <header class="memory-heading">
+      <p class="eyebrow">Three months, countless little moments</p>
+      <h1>Our Memories</h1>
+      <p>Replace the placeholder pictures below with your favorite photos of us.</p>
+    </header>
+
+    <section class="photo-collage" aria-label="Memory photo collage">
+      <figure class="polaroid p1"><img src="assets/memories/memory1.jpg" alt="Memory 1" /><figcaption>Our beginning ♡</figcaption></figure>
+      <figure class="polaroid p2"><img src="assets/memories/memory2.jpg" alt="Memory 2" /><figcaption>That smile</figcaption></figure>
+      <figure class="polaroid p3"><img src="assets/memories/memory3.jpg" alt="Memory 3" /><figcaption>Little adventures</figcaption></figure>
+      <figure class="polaroid p4"><img src="assets/memories/memory4.jpg" alt="Memory 4" /><figcaption>Us</figcaption></figure>
+      <figure class="polaroid p5"><img src="assets/memories/memory5.jpg" alt="Memory 5" /><figcaption>My favorite person</figcaption></figure>
+      <figure class="polaroid p6"><img src="assets/memories/memory6.jpg" alt="Memory 6" /><figcaption>Always you</figcaption></figure>
+      <figure class="polaroid p7"><img src="assets/memories/memory7.jpg" alt="Memory 7" /><figcaption>One more smile</figcaption></figure>
+      <figure class="polaroid p8"><img src="assets/memories/memory8.jpg" alt="Memory 8" /><figcaption>Our little world</figcaption></figure>
+      <figure class="polaroid p9"><img src="assets/memories/memory9.jpg" alt="Memory 9" /><figcaption>More to come...</figcaption></figure>
+    </section>
+
+    <p class="memory-note">And this is only the beginning. ♡</p>
+
+    <div class="page-controls">
+      <a class="nav-button previous" href="letter.html">← Previous</a>
+      <span class="save-status">Three months down. So many more ahead.</span>
+      <button class="nav-button next close-button" id="closeStory" type="button">Close with love →</button>
+    </div>
+
+    <div class="closing-overlay" id="closingOverlay" aria-hidden="true">
+      <div class="closing-message">Closing our little story... ♡</div>
+      <div class="envelope closing-envelope" aria-hidden="true">
+        <span class="envelope-back"></span>
+        <span class="envelope-paper"></span>
+        <span class="envelope-flap"></span>
+        <span class="envelope-front"></span>
+        <span class="seal">R + L</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

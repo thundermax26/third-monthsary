@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love — Our Letter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="letter-page">
+  <div class="table-texture" aria-hidden="true"></div>
+
+  <main class="letter-scene page-enter">
+    <img class="corner-flower flower-left" src="assets/flowers/flower2.png" alt="" aria-hidden="true" />
+    <img class="corner-flower flower-right" src="assets/flowers/flower6.png" alt="" aria-hidden="true" />
+
+    <section class="paper-shell" aria-label="Our love letter">
+      <div class="paper-holes" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="paper-inner">
+        <p class="letter-date">25 September 2026</p>
+        <p class="letter-heading">To my beautiful wife,</p>
+
+        <textarea id="loveLetter" spellcheck="true" aria-label="Type your love letter here" placeholder="Start writing your letter here...\n\nYou can write as much as you want. This page will scroll while you type. ♡"></textarea>
+
+        <div class="signature-area">
+          <p>Forever yours,</p>
+          <p class="signature">R + L ♡</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-controls">
+      <a class="nav-button previous" href="index.html" aria-label="Go back to the cover">← Previous</a>
+      <span class="save-status" id="saveStatus">Your letter saves automatically</span>
+      <a class="nav-button next" href="memories.html">Next →</a>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
