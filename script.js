@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loveLetter = document.getElementById('loveLetter');
   const saveStatus = document.getElementById('saveStatus');
   const STORAGE_KEY = 'rl-third-monthsary-letter';
-  const DEFAULT_LETTER = `To my beautiful baby,
+  const DEFAULT_LETTER = `My beautiful baby,
 
 Happy third monthiversary, my love. ❤️
 
