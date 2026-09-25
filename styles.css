@@ -84,7 +84,7 @@ a { color: inherit; }
   opacity: 1;
 }
 .letter-scene { min-height: 100vh; position: relative; display: grid; place-items: center; padding: 60px 20px 110px; }
-.paper-shell { position: relative; width: min(860px, 94vw); min-height: 78vh; max-height: 78vh; background: linear-gradient(100deg, rgba(155,117,74,.14), transparent 22%), linear-gradient(#f8edda, #f2e3c7); border: 1px solid rgba(112,78,44,.22); box-shadow: 0 28px 65px rgba(25, 12, 7, .34); transform: rotate(.2deg); overflow: hidden; }
+.paper-shell { position: relative; width: min(860px, 94vw); min-height: 78vh; max-height: 78vh; background: linear-gradient(100deg, rgba(155,117,74,.14), transparent 22%), background: #f6d6e1; border: 1px solid rgba(112,78,44,.22); box-shadow: 0 28px 65px rgba(25, 12, 7, .34); transform: rotate(.2deg); overflow: hidden; }
 .paper-shell::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 12% 12%, rgba(150,100,50,.14), transparent 20%), radial-gradient(circle at 87% 85%, rgba(150,100,50,.10), transparent 22%); pointer-events: none; }
 .paper-inner { height: 100%; padding: 46px 58px 42px 76px; overflow-y: auto; position: relative; z-index: 1; scrollbar-width: thin; scrollbar-color: rgba(120,75,42,.35) transparent; }
 .paper-inner::after { content: ""; position: absolute; top: 32px; bottom: 28px; left: 53px; width: 1px; background: rgba(177, 81, 93, .22); }
