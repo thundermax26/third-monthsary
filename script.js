@@ -147,3 +147,172 @@ Your loving baby`;
     }
   }
 });
+/* =========================================================
+   Background Music
+   ========================================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const MUSIC_SRC = 'assets/music/our-song.mp3';
+  const MUSIC_STATE_KEY = 'rl-third-monthsary-music';
+
+  const savedState = JSON.parse(
+    localStorage.getItem(MUSIC_STATE_KEY) || '{}'
+  );
+
+  const audio = new Audio(MUSIC_SRC);
+  audio.loop = true;
+  audio.preload = 'auto';
+
+  audio.volume =
+    typeof savedState.volume === 'number'
+      ? Math.min(1, Math.max(0, savedState.volume))
+      : 0.45;
+
+  audio.muted = Boolean(savedState.muted);
+
+  let savedTime = 0;
+  if (typeof savedState.time === 'number' && savedState.time >= 0) {
+    savedTime = savedState.time;
+  }
+
+  const musicBox = document.createElement('div');
+  musicBox.className = 'music-player';
+
+  musicBox.innerHTML = `
+    <button class="music-button" id="musicPlay" type="button" aria-label="Play music">
+      ♫
+    </button>
+
+    <input
+      class="music-volume"
+      id="musicVolume"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      aria-label="Music volume"
+    />
+
+    <button class="music-button music-mute" id="musicMute" type="button" aria-label="Mute music">
+      🔊
+    </button>
+  `;
+
+  document.body.appendChild(musicBox);
+
+  const playButton = document.getElementById('musicPlay');
+  const volumeSlider = document.getElementById('musicVolume');
+  const muteButton = document.getElementById('musicMute');
+
+  volumeSlider.value = audio.volume;
+
+  function saveMusicState() {
+    localStorage.setItem(
+      MUSIC_STATE_KEY,
+      JSON.stringify({
+        time: audio.currentTime || 0,
+        volume: audio.volume,
+        muted: audio.muted,
+        playing: !audio.paused
+      })
+    );
+  }
+
+  function updateMusicControls() {
+    if (audio.paused) {
+      playButton.textContent = '♫';
+      playButton.setAttribute('aria-label', 'Play music');
+    } else {
+      playButton.textContent = '❚❚';
+      playButton.setAttribute('aria-label', 'Pause music');
+    }
+
+    if (audio.muted || audio.volume === 0) {
+      muteButton.textContent = '🔇';
+    } else if (audio.volume < 0.5) {
+      muteButton.textContent = '🔉';
+    } else {
+      muteButton.textContent = '🔊';
+    }
+
+    volumeSlider.value = audio.volume;
+  }
+
+  async function startMusic() {
+    try {
+      if (audio.readyState >= 1 && savedTime > 0) {
+        try {
+          audio.currentTime = savedTime;
+        } catch (_) {}
+      }
+
+      await audio.play();
+      updateMusicControls();
+      saveMusicState();
+    } catch (error) {
+      // Browser autoplay policy may block automatic playback.
+      updateMusicControls();
+    }
+  }
+
+  playButton.addEventListener('click', async () => {
+    if (audio.paused) {
+      await startMusic();
+    } else {
+      audio.pause();
+      saveMusicState();
+      updateMusicControls();
+    }
+  });
+
+  muteButton.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    saveMusicState();
+    updateMusicControls();
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    audio.volume = Number(volumeSlider.value);
+
+    if (audio.volume > 0 && audio.muted) {
+      audio.muted = false;
+    }
+
+    saveMusicState();
+    updateMusicControls();
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    saveMusicState();
+  });
+
+  audio.addEventListener('play', updateMusicControls);
+  audio.addEventListener('pause', updateMusicControls);
+
+  window.addEventListener('pagehide', saveMusicState);
+
+  /*
+    If the song was already playing before moving to this page,
+    try to continue it automatically.
+  */
+  if (savedState.playing) {
+    window.setTimeout(() => {
+      startMusic();
+    }, 150);
+  }
+
+  /*
+    IMPORTANT:
+    Clicking the envelope is the first user interaction.
+    Start the music there so browsers are more likely to allow playback.
+  */
+  const openEnvelope = document.getElementById('openEnvelope');
+
+  if (openEnvelope) {
+    openEnvelope.addEventListener('click', () => {
+      startMusic();
+    });
+  }
+
+  updateMusicControls();
+});
