@@ -76,7 +76,7 @@ a { color: inherit; }
 @keyframes envelopeOpen { 45% { transform: translateY(-12px) scale(1.05); } 100% { transform: translateY(-16px) scale(1.12); opacity: 0; } }
 
 /* ---------- Letter ---------- */
-.letter-page { background: #f8dce6; }
+.letter-page { background: #b8b8b8; }
 .table-texture { position: fixed; inset: 0; background: repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 3px, rgba(0,0,0,.035) 3px 8px), repeating-linear-gradient(0deg, transparent 0 18px, rgba(0,0,0,.025) 18px 20px), linear-gradient(125deg, #4b2e20, #815538 40%, #5f3927 75%, #8b6042); opacity: .98; }
 .letter-scene { min-height: 100vh; position: relative; display: grid; place-items: center; padding: 60px 20px 110px; }
 .paper-shell { position: relative; width: min(860px, 94vw); min-height: 78vh; max-height: 78vh; background: linear-gradient(100deg, rgba(155,117,74,.14), transparent 22%), linear-gradient(#f8edda, #f2e3c7); border: 1px solid rgba(112,78,44,.22); box-shadow: 0 28px 65px rgba(25, 12, 7, .34); transform: rotate(.2deg); overflow: hidden; }
